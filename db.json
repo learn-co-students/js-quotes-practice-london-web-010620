@@ -6,16 +6,6 @@
       "author": "Ann Richards"
     },
     {
-      "id": 2,
-      "quote": "There are no secrets to success. It is the result of preparation, hard work, and learning from failure.",
-      "author": "Collin Powell"
-    },
-    {
-      "id": 3,
-      "quote": "Don't count the days, make the days count.",
-      "author": "Mike Tyson"
-    },
-    {
       "id": 4,
       "quote": "You gain strength, courage and confidence by every experience in which you really stop to look fear in the face. You are able to say to yourself, 'I have lived through this horror. I can take the next thing that comes along.' You must do the thing you think you cannot do.",
       "author": "Eleanor Roosevelt"
@@ -51,8 +41,20 @@
       "author": "Sonia Sotomayor"
     },
     {
-      "quoteId": 2,
-      "id": 11
+      "quote": "myquote1",
+      "author": "author1",
+      "id": 12
+    },
+    {
+      "quote": "myquote2",
+      "author": "author2",
+      "id": 13
+    },
+    {
+      "quote": "get busy living or get busy dying",
+      "author": "Rikesh -the big brain the first",
+      "likes": [],
+      "id": 14
     }
   ],
   "likes": [
@@ -146,6 +148,306 @@
     {
       "quoteId": 1,
       "id": 29
+    },
+    {
+      "quoteId": 1,
+      "id": 30
+    },
+    {
+      "quoteId": 1,
+      "id": 31
+    },
+    {
+      "quoteId": 4,
+      "id": 34
+    },
+    {
+      "quoteId": 5,
+      "id": 35
+    },
+    {
+      "quoteId": 6,
+      "id": 36
+    },
+    {
+      "quoteId": 7,
+      "id": 37
+    },
+    {
+      "quoteId": 8,
+      "id": 38
+    },
+    {
+      "quoteId": 1,
+      "id": 45
+    },
+    {
+      "quoteId": 1,
+      "id": 47
+    },
+    {
+      "quoteId": 13,
+      "id": 48
+    },
+    {
+      "quoteId": 1,
+      "id": 49
+    },
+    {
+      "quoteId": 1,
+      "id": 50
+    },
+    {
+      "quoteId": 1,
+      "id": 51
+    },
+    {
+      "quoteId": 1,
+      "id": 53
+    },
+    {
+      "quoteId": 13,
+      "id": 59
+    },
+    {
+      "quoteId": 13,
+      "id": 60
+    },
+    {
+      "quoteId": 13,
+      "id": 61
+    },
+    {
+      "quoteId": 1,
+      "id": 63
+    },
+    {
+      "quoteId": 1,
+      "id": 64
+    },
+    {
+      "quoteId": 1,
+      "id": 65
+    },
+    {
+      "quoteId": 1,
+      "id": 66
+    },
+    {
+      "quoteId": 14,
+      "id": 80
+    },
+    {
+      "quoteId": 14,
+      "id": 81
+    },
+    {
+      "quoteId": 14,
+      "id": 82
+    },
+    {
+      "quoteId": 14,
+      "id": 83
+    },
+    {
+      "quoteId": 14,
+      "id": 84
+    },
+    {
+      "quoteId": 14,
+      "id": 85
+    },
+    {
+      "quoteId": 14,
+      "id": 86
+    },
+    {
+      "quoteId": 14,
+      "id": 87
+    },
+    {
+      "quoteId": 14,
+      "id": 88
+    },
+    {
+      "quoteId": 14,
+      "id": 89
+    },
+    {
+      "quoteId": 14,
+      "id": 90
+    },
+    {
+      "quoteId": 14,
+      "id": 91
+    },
+    {
+      "quoteId": 14,
+      "id": 92
+    },
+    {
+      "quoteId": 14,
+      "id": 93
+    },
+    {
+      "quoteId": 14,
+      "id": 94
+    },
+    {
+      "quoteId": 14,
+      "id": 95
+    },
+    {
+      "quoteId": 14,
+      "id": 96
+    },
+    {
+      "quoteId": 14,
+      "id": 97
+    },
+    {
+      "quoteId": 14,
+      "id": 98
+    },
+    {
+      "quoteId": 14,
+      "id": 99
+    },
+    {
+      "quoteId": 5,
+      "id": 100
+    },
+    {
+      "quoteId": 5,
+      "id": 101
+    },
+    {
+      "quoteId": 5,
+      "id": 102
+    },
+    {
+      "quoteId": 5,
+      "id": 103
+    },
+    {
+      "quoteId": 5,
+      "id": 104
+    },
+    {
+      "quoteId": 5,
+      "id": 105
+    },
+    {
+      "quoteId": 5,
+      "id": 106
+    },
+    {
+      "quoteId": 5,
+      "id": 107
+    },
+    {
+      "quoteId": 5,
+      "id": 108
+    },
+    {
+      "quoteId": 5,
+      "id": 109
+    },
+    {
+      "quoteId": 5,
+      "id": 110
+    },
+    {
+      "quoteId": 5,
+      "id": 111
+    },
+    {
+      "quoteId": 5,
+      "id": 112
+    },
+    {
+      "quoteId": 5,
+      "id": 113
+    },
+    {
+      "quoteId": 5,
+      "id": 114
+    },
+    {
+      "quoteId": 5,
+      "id": 115
+    },
+    {
+      "quoteId": 5,
+      "id": 116
+    },
+    {
+      "quoteId": 5,
+      "id": 117
+    },
+    {
+      "quoteId": 5,
+      "id": 118
+    },
+    {
+      "quoteId": 5,
+      "id": 119
+    },
+    {
+      "quoteId": 5,
+      "id": 120
+    },
+    {
+      "quoteId": 5,
+      "id": 121
+    },
+    {
+      "quoteId": 5,
+      "id": 122
+    },
+    {
+      "quoteId": 5,
+      "id": 123
+    },
+    {
+      "quoteId": 5,
+      "id": 124
+    },
+    {
+      "quoteId": 5,
+      "id": 125
+    },
+    {
+      "quoteId": 5,
+      "id": 126
+    },
+    {
+      "quoteId": 5,
+      "id": 127
+    },
+    {
+      "quoteId": 5,
+      "id": 128
+    },
+    {
+      "quoteId": 5,
+      "id": 129
+    },
+    {
+      "quoteId": 5,
+      "id": 130
+    },
+    {
+      "quoteId": 12,
+      "id": 131
+    },
+    {
+      "quoteId": 12,
+      "id": 132
+    },
+    {
+      "quoteId": 12,
+      "id": 133
     }
   ]
 }
