@@ -1,112 +1,104 @@
+const QUOTES_URL = 'http://localhost:3000/quotes';
+const LIKES_URL = 'http://localhost:3000/likes';
+const QUOTES_LIKES_URL = 'http://localhost:3000/quotes?_embed=likes';
 
+const quoteListEl = document.getElementById('quote-list');
+const formEl = document.querySelector('form');
 
-const quoteList = document.querySelector("#quote-list")
-const newQuoteForm = document.querySelector("#new-quote-form")
+// api get,post,patch
+const API = {
+	getQuotesLikes: () => fetch(QUOTES_LIKES_URL).then((response) => response.json()),
+	// post quote
+	postQuote: (quote) =>
+		fetch(QUOTES_URL, {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(quote)
+		}).then((response) => response.json()),
+	deleteQuote: (quote) =>
+		fetch(`${QUOTES_URL}/${quote.id}`, {
+			method: 'DELETE'
+		}).then((res) => res.json()),
+	postLike: (quote, likeSpan) => {
+		return fetch(`${LIKES_URL}`, {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				quoteId: quote.id
+			})
+		})
+			.then((response) => response.json())
+			.then((likeSpan.innerText = parseInt(likeSpan.innerText) + 1));
+	}
+};
+// like function
+const likeQuote = (like) => {
+	API.postLike(like).then();
+};
+// delete function
+const deleteQuote = (quote, liEl) => {
+	API.deleteQuote(quote).then(() => {
+		liEl.remove();
+	});
+};
+// render quotes
+const renderQuotesLikes = (quoteslikes) => {
+	quoteslikes.forEach((quoteandlike) => renderQuoteandLike(quoteandlike));
+};
+// render quote and like
+const renderQuoteandLike = (quoteandlike) => {
+	//li element
+	const liEl = document.createElement('li');
+	liEl.className = 'quote-card';
+	// blockquote element
+	const blockquoteEl = document.createElement('blockquote');
+	blockquoteEl.className = 'blockquote';
+	// create p
+	const pEl = document.createElement('p');
+	pEl.className = 'mb-0';
+	pEl.innerText = quoteandlike.quote;
+	// create footer
+	const footerEl = document.createElement('footer');
+	footerEl.className = 'blockquote-footer';
+	footerEl.innerText = quoteandlike.author;
+	// create like button
+	const likeBtnEl = document.createElement('button');
+	likeBtnEl.className = 'btn-success';
+	likeBtnEl.innerText = 'Likes  ';
+	// like evenet listener
+	likeBtnEl.addEventListener('click', () => API.postLike(quoteandlike, likeSpan));
+	// span element
+	const likeSpan = document.createElement('span');
+	likeSpan.innerText = quoteandlike.likes ? quoteandlike.likes.length : 0;
+	likeBtnEl.appendChild(likeSpan);
+	//create delete button
+	const deleteBtnEl = document.createElement('button');
+	deleteBtnEl.className = 'btn-danger';
+	deleteBtnEl.innerText = 'Delete';
+	// delete event listener
+	deleteBtnEl.addEventListener('click', (e) => deleteQuote(quoteandlike, liEl));
+	//append elements
+	liEl.append(blockquoteEl);
+	blockquoteEl.append(pEl, footerEl, likeBtnEl, deleteBtnEl);
+	quoteListEl.append(liEl);
+};
+// send quote data
+const handleFormSubmit = (event) => {
+	event.preventDefault();
 
-newQuoteForm.addEventListener("submit", (event) => {
-  event.preventDefault()
-  // console.log(newQuoteForm.quote)
-  // create a new quote and add to our list
-  // get the user input 
-  const newQuote = document.querySelector("#new-quote").value
-  const newAuthor = document.querySelector("#author").value
+	const quote = {
+		quote: event.target.elements.quote.value,
+		author: event.target.elements.author.value
+	};
+	API.postQuote(quote).then((savedQuote) => renderQuoteandLike(savedQuote));
+};
+// event listeners for form
+formEl.addEventListener('submit', handleFormSubmit);
 
-  // once we get the user input, make fetch happen
-  // POST /quotes
-  fetch("http://localhost:3000/quotes", {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify({
-      quote: newQuote,
-      author: newAuthor
-    })
-  })
-    .then(r => r.json())
-    .then(newQuoteObj => {
-      renderSingleQuote(newQuoteObj)
-    })
-
-
-  // then add it to our list of quotes
-
-})
-
-function renderSingleQuote(quote) {
-  const newLi = document.createElement("li")
-  newLi.className = "quote-card"
-
-  let likesCount;
-  if (quote.likes) {
-    likesCount = quote.likes.length
-  } else {
-    likesCount = 0
-  }
-
-  newLi.innerHTML = `
-  <blockquote id=${quote.id} class="blockquote">
-    <p class="mb-0">${quote.quote}</p>
-    <footer class="blockquote-footer">${quote.author}</footer>
-    <br>
-    <button class='btn-success'>Likes: <span>${likesCount}</span></button>
-    <button class='btn-danger'>Delete</button>
-  </blockquote>
-  `
-
-  // NESTED EVENT LISTENERS
-  const deleteBtn = newLi.querySelector(".btn-danger")
-  const likeBtn = newLi.querySelector(".btn-success")
-
-  likeBtn.addEventListener("click", () => {
-    // debugger
-    fetch("http://localhost:3000/likes", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        quoteId: quote.id
-      })
-    })
-      .then(r => r.json())
-      .then(() => {
-        const likesSpan = newLi.querySelector("span")
-        likesSpan.textContent = parseInt(likesSpan.textContent) + 1
-      })
-  })
-
-  deleteBtn.addEventListener("click", (event) => {
-    // remove the quote from our list in the DOM
-    newLi.remove()
-
-    // do a fetch to delete on the server
-    // DELETE /quotes/:id
-    fetch(`http://localhost:3000/quotes/${quote.id}`, {
-      method: "DELETE"
-    })
-  })
-
-  quoteList.append(newLi)
-}
-
-// function handleDelete(event) {
-//   event.target.closest(".quote-card").remove()
-// }
-
-// function to parse thru the data
-function renderAllQuotes(quoteArray) {
-  // and render each element to the page
-  quoteArray.forEach(quote => {
-    renderSingleQuote(quote)
-  })
-}
-
-// Submitting the form creates a new quote 
-// and adds it to the list of quotes without 
-// having to refresh the page. Pessimistic rendering is reccommended.
-
-fetch("http://localhost:3000/quotes?_embed=likes")
-  .then(r => r.json())
-  .then(quoteArray => renderAllQuotes(quoteArray))
+API.getQuotesLikes().then((quoteslikes) => renderQuotesLikes(quoteslikes));
