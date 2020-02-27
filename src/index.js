@@ -38,9 +38,7 @@ const API = {
 	}
 };
 // like function
-const likeQuote = (like) => {
-	API.postLike(like).then();
-};
+
 // delete function
 const deleteQuote = (quote, liEl) => {
 	API.deleteQuote(quote).then(() => {
